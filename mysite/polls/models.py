@@ -9,6 +9,7 @@ class Poll(models.Model):
 		return self.question
 	def was_published_today(self):
 		return self.pub_date.date() == datetime.date.today()
+	was_published_today.short_description = 'Publicado hoy?'
 
 class Choice(models.Model):
 	poll = models.ForeignKey(Poll)

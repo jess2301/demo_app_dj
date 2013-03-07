@@ -12,6 +12,9 @@ class PollAdmin(admin.ModelAdmin):
 		('Fecha', 	{'fields': ['pub_date'], 'classes': ['collapse']}),
 	]
 	inlines = [ChoiceInline]
-	list_display = ('question', 'pub_date') #Si aniadimos was_published_today salta un error de que la variable global datetime no esta definida.
+	list_display = ('question', 'pub_date') 
+	list_filter = ['pub_date']
+	search_fields = ['question']
+	date_hierarchy = 'pub_date'
 
 admin.site.register(Poll, PollAdmin)
